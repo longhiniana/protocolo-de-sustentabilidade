@@ -2,11 +2,11 @@
 	<div>
 		<div class="flex items-center justify-between">
 			<component :is="titleTag" class="text-base font-medium text-gray-900">
-				{{title}}
+				{{ title }}
 			</component>
 		</div>
-		<RadioGroup class="mt-2">
-			<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
+		<RadioGroup class="mt-2" v-model="value">
+			<div class="grid grid-cols-4 gap-3">
 				<RadioGroupOption
 					as="template"
 					v-for="(option, index) in options"
@@ -31,26 +31,43 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-	name: 'BaseRadioGroup',
-})
-</script>
-
 <script lang="ts" setup> 
 import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
 
-defineProps({
-  title: {
+defineComponent({
+	name: 'BaseRadioGroup',
+})
+const emit = defineEmits(['update:modelValue'])
+
+const props = defineProps({
+	title: {
 		type: String, required: true
 	},
-  titleTag: {
+	titleTag: {
 		type: String, required: true
 	},
 	options: {
 		type: Array, required: true
 	},
+	option: {
+		type: String, required: true
+	}
 })
+
+
+const value = computed({
+	get() {
+		return props.option
+	},
+	set(value) {
+		emit('update:modelValue', {
+			indicator: props.title,
+			option: value
+		})
+	}
+})
+
+
+
 
 </script>

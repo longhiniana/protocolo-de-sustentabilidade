@@ -1,5 +1,6 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -8,13 +9,15 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^5.3.3",
+    "@nuxtjs/tailwindcss": "^5.3.5",
     "nuxt": "3.0.0-rc.11"
   },
   "dependencies": {
     "@formkit/nuxt": "^1.0.0-beta.11",
     "@headlessui/vue": "^1.7.3",
-    "@heroicons/vue": "^2.0.11",
-    "@tailwindcss/forms": "^0.5.3"
+    "@heroicons/vue": "^2.0.12",
+    "@tailwindcss/forms": "^0.5.3",
+    "echarts": "^5.4.0",
+    "vue-echarts": "^6.2.3"
   }
 }
